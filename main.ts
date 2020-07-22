@@ -22,7 +22,7 @@ let loopsBeforeNewEnnemy = 2
 let score = 0
 led.plot(posX, 4)
 led.plot(0, 0)
-let ennemyIsOnColumn = [false, false, false, false, false]
+let ennemyIsOnColumn = [true, false, false, false, false]
 basic.forever(function () {
     for (let x = 0; x <= 4; x++) {
         for (let y = 0; y <= 3; y++) {
