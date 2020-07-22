@@ -60,6 +60,7 @@ basic.forever(function () {
         }
     }
     if (perdu) {
+        music.playTone(131, music.beat(BeatFraction.Quarter))
         basic.clearScreen()
         basic.showString("Score:" + score)
         init()
