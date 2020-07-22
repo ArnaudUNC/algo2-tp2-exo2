@@ -6,6 +6,15 @@ input.onButtonPressed(Button.A, function () {
     }
     led.plot(posX, 4)
 })
+function init () {
+    perdu = false
+    posX = 0
+    loopsBeforeNewEnnemy = 2
+    score = 0
+    led.plot(posX, 4)
+    led.plot(0, 0)
+    ennemyIsOnColumn = [true, false, false, false, false]
+}
 input.onButtonPressed(Button.B, function () {
     led.unplot(posX, 4)
     posX += 1
@@ -15,14 +24,12 @@ input.onButtonPressed(Button.B, function () {
     led.plot(posX, 4)
 })
 let x = 0
-let posX = 0
-let perdu = false
-posX = 0
-let loopsBeforeNewEnnemy = 2
+let ennemyIsOnColumn: boolean[] = []
 let score = 0
-led.plot(posX, 4)
-led.plot(0, 0)
-let ennemyIsOnColumn = [true, false, false, false, false]
+let loopsBeforeNewEnnemy = 0
+let perdu = false
+let posX = 0
+init()
 basic.forever(function () {
     for (let x = 0; x <= 4; x++) {
         for (let y = 0; y <= 3; y++) {
@@ -52,10 +59,10 @@ basic.forever(function () {
             led.plot(x, 0)
         }
     }
-    basic.pause(500)
     if (perdu) {
-        while (true) {
-            basic.showString("Score:" + score)
-        }
+        basic.clearScreen()
+        basic.showString("Score:" + score)
+        init()
     }
+    basic.pause(500)
 })
